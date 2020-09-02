@@ -7,29 +7,82 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <div id="placar"></div>
     <div id="telaDoJogo">
-        <div id="placar"></div>
         <div id="jogoDaVelha">
-            <div id="posi0"></div>
-            <div id="posi1"></div>
-            <div id="posi2"></div>
-            <div id="posi3"></div>
-            <div id="posi4"></div>
-            <div id="posi5"></div>
-            <div id="posi6"></div>
-            <div id="posi7"></div>
-            <div id="posi8"></div>
+            <div id="posicao0" class="divPosicao" onclick=jogada(0)></div>
+            <div id="posicao1" class="divPosicao" onclick=jogada(1)></div>
+            <div id="posicao2" class="divPosicao" onclick=jogada(2)></div>
+            <div id="posicao3" class="divPosicao" onclick=jogada(3)></div>
+            <div id="posicao4" class="divPosicao" onclick=jogada(4)></div>
+            <div id="posicao5" class="divPosicao" onclick=jogada(5)></div>
+            <div id="posicao6" class="divPosicao" onclick=jogada(6)></div>
+            <div id="posicao7" class="divPosicao" onclick=jogada(7)></div>
+            <div id="posicao8" class="divPosicao" onclick=jogada(8)></div>
         </div>
         <div id="botoes">
-            <div id="btn1jogador">1 - Jogador</div>
-            <div id="btn2jogadores">2 - jogadores</div>
+            <button id="btn1jogador">1 - Jogador</button>
+            <button id="btn2jogadores">2 - jogadores</button>
             <input type="nomeJogador1">
             <input type="nomeJogador2">
-            <button id="btniniciar">Iniciar</button>
-            <button id="btnreiniciar">Reiniciar Jogo</button>
+            <button id="btnIniciar">Iniciar</button>
+            <button id="btnReiniciar">Reiniciar Jogo</button>
         </div>
     </div>
+    <script>
+        var tabuleiro = [];
+        var jogadorDaVez; //0 - player1 / 1 - player2
+        var qtdJogadas = 9;
+
+        for(var i = 0; i < 9; i++){
+            tabuleiro[i] = -1;
+        }
+
+        function jogada(posicao){
+            qtdJogadas--;
+            if(qtdJogadas >= 0){
+                if(tabuleiro[posicao] == -1){
+                    if(jogadorDaVez == 0){            
+                        document.getElementById("posicao" + posicao).style.backgroundImage = "url('imgs/x.png')";
+                        tabuleiro[posicao] = 0;
+                        jogadorDaVez = 1;
+                    }else{
+                        document.getElementById("posicao" + posicao).style.backgroundImage = "url('imgs/o.png')";
+                        tabuleiro[posicao] = 1;
+                        jogadorDaVez = 0;
+                    }
+                }
+                
+            }else{
+
+            }
+            console.log(qtdJogadas);
+            console.log(tabuleiro);
+        }
+
+        function iniciar(){
+            jogadorDaVez = 0;
+        }
+
+        function bloquearBotoes(){
+
+        }
+
+        function reiniciar(){
+            window.location.reload();
+        }
+
+        document.getElementById("btnIniciar").addEventListener("click", iniciar);
+        document.getElementById("btnReiniciar").addEventListener("click", reiniciar);
+        //window.addEventListener("load", bloquearBotoes);
+
+
+
+
+
+
+
+    </script>
     
 </body>
 </html>
