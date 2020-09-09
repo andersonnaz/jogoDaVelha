@@ -10,19 +10,19 @@
     <div id="placar"></div>
     <div id="telaDoJogo">
         <div id="jogoDaVelha">
-            <div id="posicao0" class="divPosicao" onclick=jogada(0)></div>
-            <div id="posicao1" class="divPosicao" onclick=jogada(1)></div>
-            <div id="posicao2" class="divPosicao" onclick=jogada(2)></div>
-            <div id="posicao3" class="divPosicao" onclick=jogada(3)></div>
-            <div id="posicao4" class="divPosicao" onclick=jogada(4)></div>
-            <div id="posicao5" class="divPosicao" onclick=jogada(5)></div>
-            <div id="posicao6" class="divPosicao" onclick=jogada(6)></div>
-            <div id="posicao7" class="divPosicao" onclick=jogada(7)></div>
-            <div id="posicao8" class="divPosicao" onclick=jogada(8)></div>
+            <div id="posicao0" class="divPosicao"></div>
+            <div id="posicao1" class="divPosicao"></div>
+            <div id="posicao2" class="divPosicao"></div>
+            <div id="posicao3" class="divPosicao"></div>
+            <div id="posicao4" class="divPosicao"></div>
+            <div id="posicao5" class="divPosicao"></div>
+            <div id="posicao6" class="divPosicao"></div>
+            <div id="posicao7" class="divPosicao"></div>
+            <div id="posicao8" class="divPosicao"></div>
         </div>
         <div id="botoes">
-            <button id="btn1jogador">1 - Jogador</button>
-            <button id="btn2jogadores">2 - jogadores</button>
+            <button id="btn1jogador" onclick=qtdJogadores(1)>1 - Jogador</button>
+            <button id="btn2jogadores" onclick=qtdJogadores(2)>2 - jogadores</button>
             <input type="nomeJogador1">
             <input type="nomeJogador2">
             <button id="btnIniciar">Iniciar</button>
@@ -34,7 +34,7 @@
         var jogadorDaVez; //0 - player1 / 1 - player2
         var qtdJogadas = 9;
 
-        for(var i = 0; i < 9; i++){
+        for(let i = 0; i < 9; i++){
             tabuleiro[i] = -1;
         }
 
@@ -42,70 +42,101 @@
             if((tabuleiro[0] == tabuleiro[1]) && (tabuleiro[0] == tabuleiro[2])){
                 if(tabuleiro[0] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[0] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[3] == tabuleiro[4]) && (tabuleiro[3] == tabuleiro[5])){
                 if(tabuleiro[3] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[3] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[6] == tabuleiro[7]) && (tabuleiro[6] == tabuleiro[8])){
                 if(tabuleiro[6] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[6] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[0] == tabuleiro[3]) && (tabuleiro[0] == tabuleiro[6])){
                 if(tabuleiro[0] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[0] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[1] == tabuleiro[4]) && (tabuleiro[1] == tabuleiro[7])){
                 if(tabuleiro[1] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[1] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[2] == tabuleiro[5]) && (tabuleiro[2] == tabuleiro[8])){
                 if(tabuleiro[2] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[2] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[0] == tabuleiro[4]) && (tabuleiro[0] == tabuleiro[8])){
                 if(tabuleiro[0] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[0] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
             }
             if((tabuleiro[2] == tabuleiro[4]) && (tabuleiro[2] == tabuleiro[6])){
                 if(tabuleiro[2] == 0){
                     setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
                 if(tabuleiro[2] == 1){
                     setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
+                    setTimeout(function(){reiniciar(); }, 500);
                 }
+            }
+            empate();
+        }
+
+        function empate(){
+            var empatou = true;
+            for(let i = 0; i < 9; i++){
+                if(tabuleiro[i] == -1){
+                    empatou = false;
+                }
+            }
+            if(empatou){
+              setTimeout(function(){alert("A PARTIDA EMPATOU"); }, 500);
+              setTimeout(function(){reiniciar(); }, 500);
             }
         }
 
         function jogada(posicao){
+            console.log(posicao);
             if(tabuleiro[posicao] == -1){    
                 qtdJogadas--;
                 if(qtdJogadas >= 0){
@@ -125,21 +156,48 @@
             ganhouPartida(); 
         }
 
+        function qtdJogadores(qtd){
+            if(qtd == 1){
+
+            }
+            if(qtd == 2){
+                document.getElementById("btnIniciar").disabled = false;
+            }
+        }
+
         function iniciar(){
             jogadorDaVez = 0;
+            document.getElementById("btnReiniciar").disabled = false;
+            for(let i=0; i<9; i++){
+                document.getElementById("posicao" + i).onclick = function(){jogada(i)};
+            }
+            //document.getElementById("nomeJogador1").disabled = false;
+            //document.getElementById("nomeJogador2").disabled = false;
         }
 
         function bloquearBotoes(){
-
+            document.getElementById("btnIniciar").disabled = true;
+            document.getElementById("btnReiniciar").disabled = true;
+            for(let i=0; i<9; i++){
+                document.getElementById("posicao" + i).onclick = false;
+            }
+            //document.getElementById("nomeJogador1").disabled = true;
+            //document.getElementById("nomeJogador2").disabled = true;
         }
 
         function reiniciar(){
-            window.location.reload();
+            for(let i = 0; i < 9; i++){
+                tabuleiro[i] = -1;
+                document.getElementById("posicao"+i).style.backgroundImage = "";
+            }
+            qtdJogadas = 9;
+            jogadorDaVez = 0;
+
         }
 
         document.getElementById("btnIniciar").addEventListener("click", iniciar);
         document.getElementById("btnReiniciar").addEventListener("click", reiniciar);
-        //window.addEventListener("load", bloquearBotoes);
+        window.addEventListener("load", bloquearBotoes);
 
 
 
