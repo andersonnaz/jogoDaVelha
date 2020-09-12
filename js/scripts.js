@@ -90,6 +90,10 @@ function ganhouPartida(){
     empate();
 }
 
+function placar(){
+    
+}
+
 function empate(){
     var empatou = true;
     for(let i = 0; i < 9; i++){
