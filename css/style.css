@@ -8,12 +8,13 @@
     height: 100px;
     border-style: solid;
     margin-left: 25%;
+    display: flex;
+    justify-content: space-evenly;
 }
 #jogoDaVelha{
     background-image: url("../imgs/jogodavelha.png");
     width: 512px;
     height: 512px;
-    border-style: solid;
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: space-evenly;
@@ -22,13 +23,11 @@
 .divPosicao{
     width: 113px;
     height: 117px;
-    border-style: solid;
     margin-top: 15%;
 }
 #botoes{
-    width: 500px;
-    height: 500px;
-    border-style: solid;
+    width: 480px;
+    height: 400px;
     margin-left: 7%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -41,6 +40,34 @@ button{
 }
 input{
     width: 200px;
-    height: 50px;
-    margin-left: 7%;
+    height: 30px;
+    margin-left: 8%;
+}
+output{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 5%;
+    color: #5D478B;
+
+}
+#scoreJogador1{
+    font-size: 80px;
+    font-weight: bold;
+    margin-top: -2%;
+    color: #5D478B;
+}
+#scoreJogador2{
+    font-size: 80px;
+    font-weight: bold;
+    margin-top: -2%;
+    color: #5D478B;
+}
+.divPlacar{
+    width: 80px;
+    height: 80px;
+    border-style: solid;
+    margin-top: 1%;
+    margin-left: 0%;
+    display: flex;
+    justify-content: center;
 }

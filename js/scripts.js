@@ -1,4 +1,5 @@
 var tabuleiro = [];
+var vetorPlacar = [0,0];
 var jogadorDaVez; //0 - player1 / 1 - player2
 var qtdJogadas = 9;
 
@@ -9,80 +10,96 @@ for(let i = 0; i < 9; i++){
 function ganhouPartida(){
     if((tabuleiro[0] == tabuleiro[1]) && (tabuleiro[0] == tabuleiro[2])){
         if(tabuleiro[0] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[0] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[3] == tabuleiro[4]) && (tabuleiro[3] == tabuleiro[5])){
         if(tabuleiro[3] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[3] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[6] == tabuleiro[7]) && (tabuleiro[6] == tabuleiro[8])){
         if(tabuleiro[6] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[6] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[0] == tabuleiro[3]) && (tabuleiro[0] == tabuleiro[6])){
         if(tabuleiro[0] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[0] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[1] == tabuleiro[4]) && (tabuleiro[1] == tabuleiro[7])){
         if(tabuleiro[1] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[1] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[2] == tabuleiro[5]) && (tabuleiro[2] == tabuleiro[8])){
         if(tabuleiro[2] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[2] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[0] == tabuleiro[4]) && (tabuleiro[0] == tabuleiro[8])){
         if(tabuleiro[0] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[0] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
     }
     if((tabuleiro[2] == tabuleiro[4]) && (tabuleiro[2] == tabuleiro[6])){
         if(tabuleiro[2] == 0){
+            placar(0);
             setTimeout(function(){alert("jogador1 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
         if(tabuleiro[2] == 1){
+            placar(1);
             setTimeout(function(){alert("jogador2 GANHOU A PARTIDA!!"); }, 500);
             setTimeout(function(){reiniciar(); }, 500);
         }
@@ -90,8 +107,23 @@ function ganhouPartida(){
     empate();
 }
 
-function placar(){
-    
+function placar(jogador){
+    if(jogador == 0){
+        vetorPlacar[0]++;
+        document.getElementById("scoreJogador1").innerHTML = vetorPlacar[0];
+    }
+    if(jogador == 1){
+        vetorPlacar[1]++;
+        document.getElementById("scoreJogador2").innerHTML = vetorPlacar[1];
+    }
+    if(vetorPlacar[0] > vetorPlacar[1]){
+        document.getElementById("scoreJogador1").style.color = "#00f";
+        document.getElementById("scoreJogador2").style.color = "#f00";
+    }
+    if(vetorPlacar[0] < vetorPlacar[1]){
+        document.getElementById("scoreJogador1").style.color = "#f00";
+        document.getElementById("scoreJogador2").style.color = "#00f";
+    }
 }
 
 function empate(){
@@ -134,6 +166,8 @@ function qtdJogadores(qtd){
     }
     if(qtd == 2){
         document.getElementById("btnIniciar").disabled = false;
+        document.getElementById("inputJogador1").disabled = false;
+        document.getElementById("inputJogador2").disabled = false;
     }
 }
 
@@ -144,8 +178,8 @@ function iniciar(){
     for(let i=0; i<9; i++){
         document.getElementById("posicao" + i).onclick = function(){jogada(i)};
     }
-    //document.getElementById("nomeJogador1").disabled = false;
-    //document.getElementById("nomeJogador2").disabled = false;
+    document.getElementById("outputJogador1").innerHTML = document.getElementById("inputJogador1").value;
+    document.getElementById("outputJogador2").innerHTML = document.getElementById("inputJogador2").value;
 }
 
 function bloquearBotoes(){
@@ -154,8 +188,8 @@ function bloquearBotoes(){
     for(let i=0; i<9; i++){
         document.getElementById("posicao" + i).onclick = false;
     }
-    //document.getElementById("nomeJogador1").disabled = true;
-    //document.getElementById("nomeJogador2").disabled = true;
+    document.getElementById("inputJogador1").disabled = true;
+    document.getElementById("inputJogador2").disabled = true;
 }
 
 function reiniciar(){

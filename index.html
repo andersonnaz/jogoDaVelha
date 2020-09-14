@@ -8,7 +8,15 @@
 </head>
 <body>
     <div id="placar">
-        <output></output>
+        <output id="outputJogador1">Jogador 1</output>
+        <div id="divPlacar1" class="divPlacar">
+            <output id="scoreJogador1">0</output>
+        </div>
+        <output id="vs">VS</output>
+        <div id="divPlacar2" class="divPlacar">
+            <output id="scoreJogador2">0</output>
+        </div>
+        <output id="outputJogador2">jogador 2</output>
     </div>
     <div id="telaDoJogo">
         <div id="jogoDaVelha">
@@ -25,8 +33,10 @@
         <div id="botoes">
             <button id="btn1jogador" onclick=qtdJogadores(1)>1 - Jogador</button>
             <button id="btn2jogadores" onclick=qtdJogadores(2)>2 - jogadores</button>
-            <input type="text" name="jogador1" value="Jogador 1">
-            <input type="text" name="jogador2" value="Jogador 2">
+            <input id="inputJogador1" type="text" name="jogador1" value="Jogador 1" 
+            onfocus="if (this.value=='Jogador 1') this.value='';" onblur="if (this.value=='') this.value='Jogador 1'"/>
+            <input id="inputJogador2" type="text" name="jogador2" value="Jogador 2" 
+            onfocus="if (this.value=='Jogador 2') this.value='';" onblur="if (this.value=='') this.value='Jogador 2'"/>
             <button id="btnIniciar">Iniciar</button>
             <button id="btnReiniciar">Reiniciar Jogo</button>
         </div>
