@@ -2,6 +2,7 @@ var tabuleiro = [];
 var vetorPlacar = [0,0];
 var jogadorDaVez; //0 - player1 / 1 - player2
 var qtdJogadas = 9;
+var qtdJogadores;
 
 for(let i = 0; i < 9; i++){
     tabuleiro[i] = -1;
@@ -139,6 +140,109 @@ function empate(){
     }
 }
 
+function posicaoRandom(){
+    let posicaoRandom;
+    do {
+        posicaoRandom = Math.floor(Math.random() * 9);
+    } while (tabuleiro[posicaoRandom] != -1);
+    return posicaoRandom;
+}
+
+function contraMaquina(){
+    if(qtdJogadas == 8){
+        if (tabuleiro[0] == 0 || tabuleiro[2] == 0 || tabuleiro[6] == 0 || tabuleiro[8] == 0) {
+            setTimeout(function(){document.getElementById("posicao" + 4).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+            tabuleiro[4] = 1;
+            jogadorDaVez = 0;
+            qtdJogadas--;
+        }else{
+            let pos = posicaoRandom();
+            setTimeout(function(){document.getElementById("posicao" + pos).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+            tabuleiro[pos] = 1;
+            jogadorDaVez = 0;
+            qtdJogadas--;
+        }
+    }
+    if(qtdJogadas == 6){
+        if (tabuleiro[0] == 0 && tabuleiro[1] == 0) {
+            setTimeout(function(){document.getElementById("posicao" + 2).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+            tabuleiro[2] = 1;
+            jogadorDaVez = 0;
+            qtdJogadas--;
+        } else {
+            if (tabuleiro[0] == 0 && tabuleiro[3] == 0) {
+                setTimeout(function(){document.getElementById("posicao" + 6).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                tabuleiro[6] = 1;
+                jogadorDaVez = 0;
+                qtdJogadas--;
+            } else {
+                if (tabuleiro[0] == 0 && tabuleiro[2] == 0) {
+                    setTimeout(function(){document.getElementById("posicao" + 1).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                    tabuleiro[1] = 1;
+                    jogadorDaVez = 0;
+                    qtdJogadas--;
+                } else {
+                    if (tabuleiro[0] == 0 && tabuleiro[6] == 0) {
+                        setTimeout(function(){document.getElementById("posicao" + 3).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                        tabuleiro[3] = 1;
+                        jogadorDaVez = 0;
+                        qtdJogadas--;
+                    } else {
+                        if (tabuleiro[1] == 0 && tabuleiro[2] == 0) {
+                            setTimeout(function(){document.getElementById("posicao" + 0).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                            tabuleiro[0] = 1;
+                            jogadorDaVez = 0;
+                            qtdJogadas--;
+                        } else {
+                            if (tabuleiro[2] == 0 && tabuleiro[5] == 0) {
+                                setTimeout(function(){document.getElementById("posicao" + 8).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                                tabuleiro[8] = 1;
+                                jogadorDaVez = 0;
+                                qtdJogadas--;
+                            } else  {
+                                if (tabuleiro[8] == 0 && tabuleiro[5] == 0) {
+                                    setTimeout(function(){document.getElementById("posicao" + 2).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                                    tabuleiro[2] = 1;
+                                    jogadorDaVez = 0;
+                                    qtdJogadas--;
+                                } else {
+                                    if (tabuleiro[8] == 0 && tabuleiro[7] == 0) {
+                                        setTimeout(function(){document.getElementById("posicao" + 6).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                                        tabuleiro[6] = 1;
+                                        jogadorDaVez = 0;
+                                        qtdJogadas--;
+                                    } else {
+                                        let pos = posicaoRandom();
+                                        setTimeout(function(){document.getElementById("posicao" + pos).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+                                        tabuleiro[pos] = 1;
+                                        jogadorDaVez = 0;
+                                        qtdJogadas--;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (qtdJogadas == 4) {
+        let pos = posicaoRandom();
+        setTimeout(function(){document.getElementById("posicao" + pos).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+        tabuleiro[pos] = 1;
+        jogadorDaVez = 0;
+        qtdJogadas--;
+    }
+    if (qtdJogadas == 2) {
+        let pos = posicaoRandom();
+        setTimeout(function(){document.getElementById("posicao" + pos).style.backgroundImage = "url('imgs/o.png')"; }, 200);
+        tabuleiro[pos] = 1;
+        jogadorDaVez = 0;
+        qtdJogadas--;
+    }
+    
+}
+
 function jogada(posicao){
     console.log(posicao);
     if(tabuleiro[posicao] == -1){    
@@ -157,12 +261,17 @@ function jogada(posicao){
         console.log(qtdJogadas);
         console.log(tabuleiro);
     }
-    ganhouPartida(); 
+    ganhouPartida();
+    if (qtdJogadores == 1) {
+        contraMaquina();
+    }
 }
 
-function qtdJogadores(qtd){
+function funcaoQtdJogadores(qtd){
     if(qtd == 1){
-
+        document.getElementById("btnIniciar").disabled = false;
+        document.getElementById("inputJogador1").disabled = false;
+        qtdJogadores = 1;
     }
     if(qtd == 2){
         document.getElementById("btnIniciar").disabled = false;
@@ -178,8 +287,13 @@ function iniciar(){
     for(let i=0; i<9; i++){
         document.getElementById("posicao" + i).onclick = function(){jogada(i)};
     }
-    document.getElementById("outputJogador1").innerHTML = document.getElementById("inputJogador1").value;
-    document.getElementById("outputJogador2").innerHTML = document.getElementById("inputJogador2").value;
+    if (qtdJogadores == 1) {
+        document.getElementById("outputJogador2").innerHTML = "Maquina";
+    } else {
+        document.getElementById("outputJogador1").innerHTML = document.getElementById("inputJogador1").value;
+        document.getElementById("outputJogador2").innerHTML = document.getElementById("inputJogador2").value;
+    }
+    
 }
 
 function bloquearBotoes(){
